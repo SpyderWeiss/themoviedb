@@ -12,4 +12,27 @@ Afterwards, if you'd like a report of the tests you can run the "mvn site" commm
 
 Allure reports appear in the /themoviedb/target/site folder, double click on the allure-maven-plugin.html file to see the report.
 
+There are 3 failing tests and 3 passing tests to show the functionality of logging in the Allure report for failed tests.
+
+Expected Results :
+
+Failed tests: 
+  SearchTests.searchForJackReacher2WithWrongAdultStatus:74->search:29 1 expectation failed.
+JSON path results[0].adult doesn't match.
+Expected: <true>
+  Actual: false
+
+  SearchTests.searchForJackReacher2WithWrongDate:68->search:28 1 expectation failed.
+JSON path results[0].release_date doesn't match.
+Expected: 2016-10-31
+  Actual: 2016-10-19
+
+  SearchTests.searchForJackReacher2WithWrongName:62->search:27 1 expectation failed.
+JSON path results[0].title doesn't match.
+Expected: Jack Raecher: Never Go Back
+  Actual: null
+
+
+Tests run: 6, Failures: 3, Errors: 0, Skipped: 0
+
 The project is written in Java 8 update 131.

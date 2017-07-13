@@ -15,12 +15,12 @@ import org.testng.annotations.Test;
  */
 public class APIResponding {
 
-    @Test(groups = {"TMDB"})
+    @Test(groups = {"TMDB"}, description = "Simple test to confirm The Movie DB API is returning a request_token for your provided API key.")
     public void apiResponding() throws Exception
     {
         try
         {
-            Validation validation = SetupAndTeardown.testingEndpoint(SharedResources.urlAuthenticate);
+            Validation validation = SetupAndTeardown.beforeTest(SharedResources.urlAuthenticate);
             validation.checkStatusCode(200);
             validation.checkContentType(ContentType.JSON);
             validation.validateRequestToken();

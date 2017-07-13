@@ -21,7 +21,7 @@ public class SearchTests {
         Validation validation = null;
         try
         {
-            validation = SetupAndTeardown.testingEndpoint(SharedResources.urlSearch);
+            validation = SetupAndTeardown.beforeTest(SharedResources.urlSearch, title);
             validation.checkStatusCode(200);
             validation.checkContentType(ContentType.JSON);
             validation.validateMovieTitle(expectedResultNumber, title);
@@ -52,24 +52,25 @@ public class SearchTests {
     @Test(groups = {"TMDB"}, description = "Searches for the movie Jack Reacher: Never Go Back")
     public void searchForJackReacher2()
     {
-        search("Jack Reacher: Never Go Back", "2016-10-19", false, 1);
+        search("Jack Reacher: Never Go Back", "2016-10-19", false, 0);
     }
 
+    //I've included these 3 error tests so that examples of failed tests can be shown in the Allure report.
     @Test(groups = {"INTENTIONAL_ERROR"}, description = "Searches for a movie with a non-matching name")
     public void searchForJackReacher2WithWrongName()
     {
-        search("Jack Raecher: Never Go Back", "2016-10-19", false, 1);
+        search("Jack Raecher: Never Go Back", "2016-10-19", false, 0);
     }
 
     @Test(groups = {"INTENTIONAL_ERROR"}, description = "Searches for a movie with a non-matching date")
     public void searchForJackReacher2WithWrongDate()
     {
-        search("Jack Reacher: Never Go Back", "2016-10-31", false, 1);
+        search("Jack Reacher: Never Go Back", "2016-10-31", false, 0);
     }
 
     @Test(groups = {"INTENTIONAL_ERROR"}, description = "Searches for a movie with a non-matching adult status")
     public void searchForJackReacher2WithWrongAdultStatus()
     {
-        search("Jack Reacher: Never Go Back", "2016-10-19", true, 1);
+        search("Jack Reacher: Never Go Back", "2016-10-19", true, 0);
     }
 }
