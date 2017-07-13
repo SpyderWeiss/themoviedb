@@ -1,15 +1,11 @@
 package TestCases;
 
-import Structure.Logging;
-import Structure.SharedResources;
+import Structure.*;
 import io.restassured.http.ContentType;
-import io.restassured.response.ValidatableResponse;
-import org.apache.log4j.BasicConfigurator;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
 /**
  * Created by spyderweiss on 7/8/17.
@@ -24,14 +20,12 @@ public class SearchTest {
         try
         {
             Logging.log("Beginning test.");
-            BasicConfigurator.configure();
-            ValidatableResponse response = given().when()
-                    .get(SharedResources.urlSearch).then();
-            response.assertThat().statusCode(200);
-            response.assertThat().contentType(ContentType.JSON);
-            response.assertThat().body("results[0].title", equalTo("Jack Reacher"));
-            response.assertThat().body("results[0].release_date", equalTo(	"2012-12-20"));
-            response.assertThat().body("results[0].adult", equalTo(false));
+            Validation validation = SetupAndTeardown.setupURL(SharedResources.urlSearch);
+            validation.checkStatusCode(200);
+            validation.checkContentType(ContentType.JSON);
+            validation.findValueIn(ValueType.BODY,"results[0].title", equalTo("Jack Reacher"));
+            validation.findValueIn(ValueType.BODY,"results[0].release_date", equalTo(	"2012-12-20"));
+            validation.findValueIn(ValueType.BODY,"results[0].adult", equalTo(false));
             Logging.log("Ending test.");
         }
         catch (Exception ex)

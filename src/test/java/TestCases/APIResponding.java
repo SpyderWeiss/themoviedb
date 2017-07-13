@@ -1,15 +1,11 @@
 package TestCases;
 
-import Structure.Logging;
-import Structure.SharedResources;
+import Structure.*;
 import io.restassured.http.ContentType;
-import io.restassured.response.ValidatableResponse;
-import org.apache.log4j.BasicConfigurator;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.core.IsNot.not;
 
 /**
  * Created by spyderweiss on 7/8/17.
@@ -23,13 +19,10 @@ public class APIResponding {
     {
         try
         {
-            Logging.log("Beginning test.");
-            BasicConfigurator.configure();
-            ValidatableResponse response = given().when().get(SharedResources.urlAuthenticate).then();
-            response.assertThat().statusCode(200);
-            response.assertThat().contentType(ContentType.JSON);
-            response.assertThat().body("request_token", not(""));
-            Logging.log("Ending test.");
+            Validation validation = SetupAndTeardown.setupURL(SharedResources.urlAuthenticate);
+            validation.checkStatusCode(200);
+            validation.checkContentType(ContentType.JSON);
+            validation.findValueIn(ValueType.BODY, "request_token", not(""));
         }
         catch (Exception ex)
         {
