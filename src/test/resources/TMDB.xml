@@ -8,7 +8,7 @@
         </groups>
         <classes>
             <class name="TestCases.APIResponding" />
-            <class name="TestCases.SearchTest" />
+            <class name="TestCases.SearchTests" />
         </classes>
     </test>
 </suite>

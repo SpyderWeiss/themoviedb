@@ -1,11 +1,12 @@
 package TestCases;
 
-import Structure.*;
+import Structure.Logging;
+import Structure.SetupAndTeardown;
+import Structure.SharedResources;
+import Structure.Validation;
 import io.restassured.http.ContentType;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
-
-import static org.hamcrest.core.IsNot.not;
 
 /**
  * Created by spyderweiss on 7/8/17.
@@ -22,7 +23,7 @@ public class APIResponding {
             Validation validation = SetupAndTeardown.testingEndpoint(SharedResources.urlAuthenticate);
             validation.checkStatusCode(200);
             validation.checkContentType(ContentType.JSON);
-            validation.findValueIn(ValueType.BODY, "request_token", not(""));
+            validation.validateRequestToken();
         }
         catch (Exception ex)
         {

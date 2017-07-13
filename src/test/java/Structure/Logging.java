@@ -15,6 +15,11 @@ public class Logging
 		Reporter.log(msg, true);
 	}
 
+	public static void log(String msg, Object... args)
+	{
+		Reporter.log(String.format(msg, (Object[]) args), true);
+	}
+
 	/**
 	 * Method to add the TestNG log to an Allure report
 	 *
