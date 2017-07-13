@@ -19,14 +19,12 @@ public class SearchTest {
     {
         try
         {
-            Logging.log("Beginning test.");
-            Validation validation = SetupAndTeardown.setupURL(SharedResources.urlSearch);
+            Validation validation = SetupAndTeardown.testingEndpoint(SharedResources.urlSearch);
             validation.checkStatusCode(200);
             validation.checkContentType(ContentType.JSON);
             validation.findValueIn(ValueType.BODY,"results[0].title", equalTo("Jack Reacher"));
             validation.findValueIn(ValueType.BODY,"results[0].release_date", equalTo(	"2012-12-20"));
             validation.findValueIn(ValueType.BODY,"results[0].adult", equalTo(false));
-            Logging.log("Ending test.");
         }
         catch (Exception ex)
         {

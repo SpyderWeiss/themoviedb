@@ -19,7 +19,7 @@ public class SetupAndTeardown {
     }
 
     @BeforeClass
-    public static Validation setupURL(String url)
+    public static Validation testingEndpoint(String url)
     {
         BasicConfigurator.configure();
         ValidatableResponse response = given().when().get(urlBase + url).then();

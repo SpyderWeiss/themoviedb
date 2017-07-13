@@ -19,7 +19,7 @@ public class APIResponding {
     {
         try
         {
-            Validation validation = SetupAndTeardown.setupURL(SharedResources.urlAuthenticate);
+            Validation validation = SetupAndTeardown.testingEndpoint(SharedResources.urlAuthenticate);
             validation.checkStatusCode(200);
             validation.checkContentType(ContentType.JSON);
             validation.findValueIn(ValueType.BODY, "request_token", not(""));
