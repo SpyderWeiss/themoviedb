@@ -1,5 +1,7 @@
 # Themoviedb
-This project contains basic Rest Assured testing for the themoviedb's API.
+This project contains a early implementation of the Rest Assured testing framework for the themoviedb's API.
+
+**Instructions**
 
 Make sure you go in and add the api key into the apiKey String value in the SharedResources class.
 
@@ -11,6 +13,8 @@ You can also just go to the apiResponding method or the searchForJackReacher met
 Afterwards, if you'd like a report of the tests you can run the "mvn site" commmand to output an Allure report.
 
 Allure reports appear in the /themoviedb/target/site folder, double click on the allure-maven-plugin.html file to see the report.
+
+**Other Notes:**
 
 There are 3 failing tests and 3 passing tests to show the functionality of logging in the Allure report for failed tests.
 
@@ -31,7 +35,6 @@ Expected: 2016-10-31
 JSON path results[0].title doesn't match.
 Expected: Jack Raecher: Never Go Back
   Actual: null
-
 
 Tests run: 6, Failures: 3, Errors: 0, Skipped: 0
 
