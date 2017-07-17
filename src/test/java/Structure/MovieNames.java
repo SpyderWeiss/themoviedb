@@ -13,7 +13,7 @@ public enum MovieNames {
      *
      * @return Movie name string
      */
-    private String toMovieName()
+    public String toMovieName()
     {
         String value;
         switch (this)

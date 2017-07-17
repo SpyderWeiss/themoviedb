@@ -43,31 +43,31 @@ public class SearchTests {
     @Test(groups = {"TMDB"}, description = "Searches for the movie Jack Reacher")
     public void searchForJackReacher() throws Exception
     {
-        search(MovieNames.JACK_REACHER.toString(), "2012-12-20", false, 0);
+        search(MovieNames.JACK_REACHER.toMovieName(), "2012-12-20", false, 0);
     }
 
     @Test(groups = {"TMDB"}, description = "Searches for the movie Jack Reacher: Never Go Back")
     public void searchForJackReacher2()
     {
-        search(MovieNames.JACK_REACHER_2.toString(), "2016-10-19", false, 0);
+        search(MovieNames.JACK_REACHER_2.toMovieName(), "2016-10-19", false, 0);
     }
 
     //I've included these 3 error tests so that examples of failed tests can be shown in the Allure report.
     @Test(groups = {"INTENTIONAL_ERROR"}, description = "Searches for a movie with a non-matching name")
     public void searchForJackReacher2WithWrongName()
     {
-        search(MovieNames.JACK_REACHER_2.toString(), "2016-10-19", false, 0);
+        search(MovieNames.JACK_REACHER_2.toMovieName(), "2016-10-19", false, 0);
     }
 
     @Test(groups = {"INTENTIONAL_ERROR"}, description = "Searches for a movie with a non-matching date")
     public void searchForJackReacher2WithWrongDate()
     {
-        search(MovieNames.JACK_REACHER_2.toString(), "2016-10-31", false, 0);
+        search(MovieNames.JACK_REACHER_2.toMovieName(), "2016-10-31", false, 0);
     }
 
     @Test(groups = {"INTENTIONAL_ERROR"}, description = "Searches for a movie with a non-matching adult status")
     public void searchForJackReacher2WithWrongAdultStatus()
     {
-        search(MovieNames.JACK_REACHER_2.toString(), "2016-10-19", true, 0);
+        search(MovieNames.JACK_REACHER_2.toMovieName(), "2016-10-19", true, 0);
     }
 }
